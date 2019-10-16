@@ -15,7 +15,7 @@ def add_prometheus_middleware(
         metrics_path: Optional[str] = '/metrics'
 ) -> Application:
     """Adds prometheus middleware as the first middleware.
-    
+
     :param app: The ASGI application
     :type app: Application
     :param request_monitor: An optional custom request monitor
@@ -29,7 +29,7 @@ def add_prometheus_middleware(
     """
     prometheus_middleware = PrometheusMiddleware(request_monitor, **(request_monitor_args or {}))
     app.middlewares.insert(0, prometheus_middleware)
-    
+
     if metrics_path:
         app.http_router.add({'GET'}, metrics_path, prometheus_view)
 
