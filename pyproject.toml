@@ -16,6 +16,7 @@ baretypes = "^3.0.5"
 bareutils = "^3.1"
 bareASGI = "^3.0"
 prometheus_client = "^0.7.1"
+jetblack-metrics = "^1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.0"

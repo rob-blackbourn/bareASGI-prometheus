@@ -6,7 +6,7 @@ from baretypes import (
     RouteMatches
 )
 
-from .timed_metric import TimedMetric
+from jetblack_metrics import TimedMetric
 
 
 class HttpRequestMetric(TimedMetric):

@@ -12,7 +12,7 @@ from baretypes import (
 )
 
 from .metrics import HttpRequestMetric, PrometheusHttpRequestMetric
-from .monitor import monitor
+from jetblack_metrics import monitor
 
 class PrometheusMiddleware:
     """Prometheus Middleware"""
