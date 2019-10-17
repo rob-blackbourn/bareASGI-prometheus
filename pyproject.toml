@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bareASGI-prometheus"
-version = "3.4.0"
+version = "3.5.0"
 description = "Prometheus metrics for bareASGI"
 authors = ["Rob Blackbourn <rob.blackbourn@gmail.com>"]
 license = "Apache-2.0"
