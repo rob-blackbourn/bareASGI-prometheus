@@ -18,11 +18,11 @@ from baretypes import (
     HttpResponse,
 )
 
-from bareasgi_prometheus import PrometheusMiddleware, prometheus_view, add_prometheus_middleware
+from bareasgi_prometheus import add_prometheus_middleware
 
 logging.basicConfig(level=logging.DEBUG)
 
-logger = logging.getLogger('server_sent_events')
+LOGGER = logging.getLogger('server_sent_events')
 
 
 async def index(

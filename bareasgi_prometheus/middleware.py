@@ -1,6 +1,6 @@
 """Prometheus middleware"""
 
-from typing import Type, Optional
+from typing import Optional, Type
 
 from baretypes import (
     Scope,
@@ -11,14 +11,19 @@ from baretypes import (
     HttpResponse
 )
 
-from .monitors import RequestMonitor, BaseRequestMonitor
+from .metrics import HttpRequestMetric, PrometheusHttpRequestMetric
+from .monitor import monitor
 
 class PrometheusMiddleware:
     """Prometheus Middleware"""
 
-    def __init__(self, request_monitor: Optional[Type[BaseRequestMonitor]] = None, **kwargs):
-        self._request_monitor = request_monitor or RequestMonitor
-        self._monitor_args = kwargs
+    def __init__(
+            self,
+            metric_type: Type[HttpRequestMetric] = None,
+            name: Optional[str] = None
+    ):
+        self.metric_type = metric_type or PrometheusHttpRequestMetric
+        self.name = name or 'bareASGI'
 
     async def __call__(
             self,
@@ -28,7 +33,7 @@ class PrometheusMiddleware:
             content: Content,
             handler: HttpRequestCallback
     ) -> HttpResponse:
-        with self._request_monitor(scope, **self._monitor_args) as monitor:
+        with monitor(self.metric_type(self.name, scope, info, matches)) as metric:
             status, headers, content, pushes = await handler(scope, info, matches, content)
-            monitor.observe(status)
+            metric.status = status
             return status, headers, content, pushes
