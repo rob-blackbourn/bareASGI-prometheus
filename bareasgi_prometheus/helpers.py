@@ -10,7 +10,10 @@ from .view import prometheus_view
 
 def add_prometheus_middleware(
         app: Application,
+        *,
         metric_type: Optional[Type[HttpRequestMetric]] = None,
+        host: Optional[str] = None,
+        app_name: Optional[str] = None,
         metrics_path: Optional[str] = '/metrics'
 ) -> Application:
     """Adds prometheus middleware as the first middleware.
@@ -24,7 +27,7 @@ def add_prometheus_middleware(
     :return: The ASGI application
     :rtype: Application
     """
-    prometheus_middleware = PrometheusMiddleware(metric_type)
+    prometheus_middleware = PrometheusMiddleware(metric_type=metric_type, host=host, app_name=app_name)
     app.middlewares.insert(0, prometheus_middleware)
 
     if metrics_path:
