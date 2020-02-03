@@ -1,4 +1,7 @@
-"""bareASGI prometheus middleware"""
+"""bareASGI prometheus middleware
+
+Provides metrics for requests to a bareASGI web service.
+"""
 
 from .metrics import (
     HttpRequestMetric,

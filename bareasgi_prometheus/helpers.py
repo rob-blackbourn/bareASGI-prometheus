@@ -17,16 +17,22 @@ def add_prometheus_middleware(
         metrics_path: Optional[str] = '/metrics'
 ) -> Application:
     """Adds prometheus middleware as the first middleware.
-
-    :param app: The ASGI application
-    :type app: Application
-    :param request_monitor: An optional custom request monitor
-    :type request_monitor: Optional[Type[BaseRequestMonitor]]
-    :param metrics_path: An optional path for the metrics, defaults to None
-    :type metrics_path: Optional[str], optional
-    :return: The ASGI application
-    :rtype: Application
+    
+    Args:
+        app (Application): The ASGI application
+        metric_type (Optional[Type[HttpRequestMetric]], optional): An optional
+            custom request monitor. Defaults to None.
+        host (Optional[str], optional): An optional path for the metrics.
+            Defaults to None.
+        app_name (Optional[str], optional): The application name. Defaults to
+            None.
+        metrics_path (Optional[str], optional): The path from which the metrics
+            will be served. Defaults to '/metrics'.
+    
+    Returns:
+        Application: The ASGI application
     """
+
     prometheus_middleware = PrometheusMiddleware(metric_type=metric_type, host=host, app_name=app_name)
     app.middlewares.insert(0, prometheus_middleware)
 

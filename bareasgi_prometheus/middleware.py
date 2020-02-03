@@ -25,6 +25,15 @@ class PrometheusMiddleware:
             host: Optional[str] = None,
             app_name: Optional[str] = None
     ):
+        """Prometheus middleware
+        
+        Args:
+            metric_type (Type[HttpRequestMetric], optional): The metric type.
+                Defaults to None.
+            host (Optional[str], optional): The host. Defaults to None.
+            app_name (Optional[str], optional): The application name. Defaults
+                to None.
+        """
         self.metric_type = metric_type or PrometheusHttpRequestMetric
         self.host = host or gethostname()
         self.app_name = app_name or 'bareASGI'
