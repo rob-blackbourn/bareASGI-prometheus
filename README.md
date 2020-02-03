@@ -2,6 +2,8 @@
 
 Prometheus metrics for bareASGI
 
+The documentation is [here](https://rob-blackbourn.github.io/bareASGI-prometheus/).
+
 ## Installation
 
 Install from the pie store
