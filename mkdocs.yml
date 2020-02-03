@@ -11,6 +11,7 @@ edit_uri: ""
 theme:
     name: 'material'
     logo: images/peach.svg
+    favicon: images/favicon.ico
 
 nav:
   - index.md
