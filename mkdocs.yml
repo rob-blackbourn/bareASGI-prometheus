@@ -10,6 +10,7 @@ edit_uri: ""
 
 theme:
     name: 'material'
+    logo: images/peach.svg
 
 nav:
   - index.md
