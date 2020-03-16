@@ -1093,32 +1093,32 @@ will be served. Defaults to '/metrics'.</p>
   <span class="autodoc-title-type">async function </span><span class="autodoc-qualifier">bareasgi_prometheus</span><span class="autodoc-punctuation">.</span><span class="autodoc-title-name">prometheus_view</span>
 <a class="headerlink" href="#async-function-bareasgi_prometheusprometheus_view" title="Permanent link">&para;</a></h3>
 <h4 class="autodoc-title" id="summary_2">Summary<a class="headerlink" href="#summary_2" title="Permanent link">&para;</a></h4>
-<p>Returns the prometheus stats</p>
+<p>The endpoint for prometheus stats</p>
 <div class="autodoc-description">
 
 </div>
 <div class="autodoc-signature"><span class="autodoc-keyword">async</span><span> </span><span class="autodoc-qualifier">bareasgi_prometheus</span><span class="autodoc-punctuation">.</span><var class="autodoc-varname">prometheus_view</var><span class="autodoc-punctuation">(</span><br />
 <div class="autodoc-argument">
-        <var class="autodoc-varname">_scope</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Mapping[strAny]</span><span class="autodoc-punctuation">,</span></div>
+        <var class="autodoc-varname">_scope</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Scope</span><span class="autodoc-punctuation">,</span></div>
 <div class="autodoc-argument">
-        <var class="autodoc-varname">_info</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">UnionMutableMapping[strAny], NoneType]</span><span class="autodoc-punctuation">,</span></div>
+        <var class="autodoc-varname">_info</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Info</span><span class="autodoc-punctuation">,</span></div>
 <div class="autodoc-argument">
-        <var class="autodoc-varname">_matches</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Mapping[strAny]</span><span class="autodoc-punctuation">,</span></div>
+        <var class="autodoc-varname">_matches</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">RouteMatches</span><span class="autodoc-punctuation">,</span></div>
 <div class="autodoc-argument">
-        <var class="autodoc-varname">_content</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">AsyncIterable[bytes]</span></div>
-<span class="autodoc-punctuation">)</span><span class="autodoc-punctuation"> -&gt; </span><span class="autodoc-vartype">Union[intTuple[intUnionListTuple[bytes, bytes]], NoneTypeTuple[intUnionListTuple[bytes, bytes]], NoneTypeUnionAsyncIterable[bytes], NoneTypeTuple[intUnionListTuple[bytes, bytes]], NoneTypeUnionAsyncIterable[bytes], NoneTypeUnionIterableTuple[strListTuple[bytes, bytes]]]], NoneType]]]</span></div>
+        <var class="autodoc-varname">_content</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Content</span></div>
+<span class="autodoc-punctuation">)</span><span class="autodoc-punctuation"> -&gt; </span><span class="autodoc-vartype">HttpResponse</span></div>
 <br />
 <div class="autodoc-parameters">
 <h4 class="autodoc-title" id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
-<var class="autodoc-varname">_scope</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Mapping[strAny]</span><p></p>
-<var class="autodoc-varname">_info</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">UnionMutableMapping[strAny], NoneType]</span><p></p>
-<var class="autodoc-varname">_matches</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Mapping[strAny]</span><p></p>
-<var class="autodoc-varname">_content</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">AsyncIterable[bytes]</span><p></p>
+<var class="autodoc-varname">_scope</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Scope</span><p>The scope.</p>
+<var class="autodoc-varname">_info</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Info</span><p>The info.</p>
+<var class="autodoc-varname">_matches</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">RouteMatches</span><p>The route matches</p>
+<var class="autodoc-varname">_content</var><span class="autodoc-punctuation">: </span><span class="autodoc-vartype">Content</span><p>The contents</p>
 </div>
 <div class="autodoc-returns">
 <h4 class="autodoc-title" id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
-<span class="autodoc-vartype">Union[intTuple[intUnionListTuple[bytes, bytes]], NoneTypeTuple[intUnionListTuple[bytes, bytes]], NoneTypeUnionAsyncIterable[bytes], NoneTypeTuple[intUnionListTuple[bytes, bytes]], NoneTypeUnionAsyncIterable[bytes], NoneTypeUnionIterableTuple[strListTuple[bytes, bytes]]]], NoneType]]]</span><span class="autodoc-punctuation">: </span>
-
+<span class="autodoc-vartype">HttpResponse</span><span class="autodoc-punctuation">: </span>
+<span class="autodoc-summary">The prometheus statistics</span>
 </div>
 <div class="autodoc-raises">
 
