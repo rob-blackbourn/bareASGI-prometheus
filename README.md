@@ -1,6 +1,6 @@
 # bareASGI-prometheus
 
-Prometheus metrics for bareASGI (read the [docs](https://rob-blackbourn.github.io/bareASGI-prometheus/)).
+[Prometheus](https://prometheus.io/) metrics for bareASGI (read the [docs](https://rob-blackbourn.github.io/bareASGI-prometheus/)).
 
 ## Installation
 
