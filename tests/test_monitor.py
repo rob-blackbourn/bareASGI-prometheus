@@ -12,14 +12,16 @@ from baretypes import (
 
 from bareasgi_prometheus.metrics import HttpRequestMetric
 
+
 def test_http_request_metric():
     """Test the HTTP request metric"""
 
-    name = 'test'
+    host = 'host'
+    app_name = 'test'
     scope: Scope = {'method': 'GET', 'path': '/index.html'}
     info: Info = {}
     matches: RouteMatches = {}
-    metric = HttpRequestMetric(name, scope, info, matches)
+    metric = HttpRequestMetric(host, app_name, scope, info, matches)
     with monitor(metric):
         sleep(1)
         metric.status = 200
@@ -27,4 +29,4 @@ def test_http_request_metric():
     assert round(metric.elapsed) == 1
     assert metric.status == 200
     assert metric.scope == scope
-    assert metric.name == name
+    assert metric.app_name == app_name
