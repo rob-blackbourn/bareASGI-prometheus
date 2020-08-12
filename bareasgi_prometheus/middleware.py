@@ -12,8 +12,10 @@ from baretypes import (
     HttpResponse
 )
 
-from .metrics import HttpRequestMetric, PrometheusHttpRequestMetric
 from jetblack_metrics import monitor
+
+from .metrics import HttpRequestMetric, PrometheusHttpRequestMetric
+
 
 class PrometheusMiddleware:
     """Prometheus Middleware"""
@@ -26,7 +28,7 @@ class PrometheusMiddleware:
             app_name: Optional[str] = None
     ):
         """Prometheus middleware
-        
+
         Args:
             metric_type (Type[HttpRequestMetric], optional): The metric type.
                 Defaults to None.

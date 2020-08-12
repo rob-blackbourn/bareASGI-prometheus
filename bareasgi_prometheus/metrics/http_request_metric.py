@@ -21,7 +21,7 @@ class HttpRequestMetric(TimedMetric):
             matches: RouteMatches
     ) -> None:
         """Create an HTTP request metric
-        
+
         Args:
             host (str): The host
             app_name (str): The name of the application
