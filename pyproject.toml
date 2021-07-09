@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bareASGI-prometheus"
-version = "3.6.1"
+version = "3.7.0"
 description = "Prometheus metrics for bareASGI"
 authors = ["Rob Blackbourn <rob.blackbourn@gmail.com>"]
 license = "Apache-2.0"
@@ -13,7 +13,7 @@ repository = "https://github.com/rob-blackbourn/bareASGI-prometheus"
 [tool.poetry.dependencies]
 python = "^3.7"
 bareASGI = "^3"
-prometheus_client = "^0.7"
+prometheus_client = "^0.11"
 jetblack-metrics = "^1"
 
 [tool.poetry.dev-dependencies]
@@ -24,8 +24,8 @@ uvicorn = "^0.9"
 hypercorn = "^0.9"
 Sphinx = "^1.8"
 sphinxcontrib-websupport = "^1.1"
-pylint = "^2.3"
-mypy = "^0.720.0"
+pylint = "^2.9"
+mypy = "^0.910"
 mkdocs = "^1"
 mkdocs-material = "^4"
 jetblack-markdown = "^0.6"

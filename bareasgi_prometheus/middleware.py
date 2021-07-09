@@ -8,8 +8,8 @@ from baretypes import (
     Info,
     RouteMatches,
     Content,
-    HttpRequestCallback,
-    HttpResponse
+    HttpResponse,
+    HttpChainedCallback
 )
 
 from jetblack_metrics import monitor
@@ -46,9 +46,20 @@ class PrometheusMiddleware:
             info: Info,
             matches: RouteMatches,
             content: Content,
-            handler: HttpRequestCallback
+            handler: HttpChainedCallback
     ) -> HttpResponse:
-        with monitor(self.metric_type(self.host, self.app_name, scope, info, matches)) as metric:
-            status, headers, content, pushes = await handler(scope, info, matches, content)
+        with monitor(self.metric_type(
+                self.host,
+                self.app_name,
+                scope,
+                info,
+                matches
+        )) as metric:
+            status, headers, response_content, pushes = await handler(
+                scope,
+                info,
+                matches,
+                content
+            )
             metric.status = status
-            return status, headers, content, pushes
+            return status, headers, response_content, pushes
