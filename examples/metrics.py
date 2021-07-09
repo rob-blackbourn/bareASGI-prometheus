@@ -103,10 +103,10 @@ if __name__ == "__main__":
     add_prometheus_middleware(app)
 
     app.http_router.add({'GET'}, '/', index)
+    app.http_router.add({'GET'}, '/index.html', index)
     app.http_router.add({'GET'}, '/example1', test_page1)
     app.http_router.add({'GET'}, '/example2', test_page2)
     app.http_router.add({'GET'}, '/empty', test_empty)
-
 
     import uvicorn
     from hypercorn.asyncio import serve
@@ -116,11 +116,12 @@ if __name__ == "__main__":
 
     USE_UVICORN = False
     hostname = socket.gethostname()
-    certfile = os.path.expanduser(f"~/.keys/{hostname}.crt")
-    keyfile = os.path.expanduser(f"~/.keys/{hostname}.key")
+    certfile = os.path.expanduser(f"~/.keys/server.crt")
+    keyfile = os.path.expanduser(f"~/.keys/server.key")
 
     if USE_UVICORN:
-        uvicorn.run(app, host='0.0.0.0', port=9009, ssl_keyfile=keyfile, ssl_certfile=certfile)
+        uvicorn.run(app, host='0.0.0.0', port=9009,
+                    ssl_keyfile=keyfile, ssl_certfile=certfile)
     else:
         config = Config()
         config.bind = ["0.0.0.0:9009"]
