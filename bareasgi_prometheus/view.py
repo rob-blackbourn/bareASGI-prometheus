@@ -1,6 +1,9 @@
 """The promethues monitor page"""
 
-from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+from prometheus_client import (  # type: ignore
+    CONTENT_TYPE_LATEST,
+    generate_latest
+)
 
 from bareasgi import bytes_writer
 

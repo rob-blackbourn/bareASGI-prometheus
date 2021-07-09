@@ -1,8 +1,13 @@
 """Monitors"""
 
-from prometheus_client import Counter, Gauge, Histogram
+from prometheus_client import (  # type: ignore
+    Counter,
+    Gauge,
+    Histogram
+)
 
 from .http_request_metric import HttpRequestMetric
+
 
 class PrometheusHttpRequestMetric(HttpRequestMetric):
     """
