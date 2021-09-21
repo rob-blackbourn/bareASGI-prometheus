@@ -2,6 +2,10 @@
 
 [Prometheus](https://prometheus.io/) metrics for bareASGI (read the [docs](https://rob-blackbourn.github.io/bareASGI-prometheus/)).
 
+## Branch
+
+This is the v3 maintenance branch.
+
 ## Installation
 
 Install from the pie store
@@ -26,7 +30,6 @@ prometheus_middleware = PrometheusMiddleware()
 app = Application(middlewares=[prometheus_middleware])
 app.http_router.add({'GET'}, '/metrics', prometheus_view)
 ```
-
 
 ### Helper Configuration
 
