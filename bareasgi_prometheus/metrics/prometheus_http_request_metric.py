@@ -1,6 +1,6 @@
 """Monitors"""
 
-from prometheus_client import (  # type: ignore
+from prometheus_client import (
     Counter,
     Gauge,
     Histogram
@@ -36,8 +36,8 @@ class PrometheusHttpRequestMetric(HttpRequestMetric):
         self.REQUEST_IN_PROGRESS.labels(
             self.host,
             self.app_name,
-            self.scope['method'],
-            self.scope['path']
+            self.request.scope['method'],
+            self.request.scope['path']
         ).inc()
 
     def on_exit(self) -> None:
@@ -45,19 +45,19 @@ class PrometheusHttpRequestMetric(HttpRequestMetric):
         self.REQUEST_COUNT.labels(
             self.host,
             self.app_name,
-            self.scope['method'],
-            self.scope['path'],
+            self.request.scope['method'],
+            self.request.scope['path'],
             self.status
         ).inc()
         self.REQUEST_LATENCY.labels(
             self.host,
             self.app_name,
-            self.scope['method'],
-            self.scope['path']
+            self.request.scope['method'],
+            self.request.scope['path']
         ).observe(self.elapsed)
         self.REQUEST_IN_PROGRESS.labels(
             self.host,
             self.app_name,
-            self.scope['method'],
-            self.scope['path']
+            self.request.scope['method'],
+            self.request.scope['path']
         ).dec()

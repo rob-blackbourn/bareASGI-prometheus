@@ -7,28 +7,17 @@ from prometheus_client import (  # type: ignore
 
 from bareasgi import bytes_writer
 
-from baretypes import (
-    Scope,
-    Info,
-    RouteMatches,
-    Content,
+from bareasgi import (
+    HttpRequest,
     HttpResponse
 )
 
 
-async def prometheus_view(
-        _scope: Scope,
-        _info: Info,
-        _matches: RouteMatches,
-        _content: Content
-) -> HttpResponse:
+async def prometheus_view(_request: HttpRequest) -> HttpResponse:
     """The endpoint for prometheus stats
 
     Args:
-        _scope (Scope): The scope.
-        _info (Info): The info.
-        _matches (RouteMatches): The route matches
-        _content (Content): The contents
+        _request (HttpRequest): The request.
 
     Returns:
         HttpResponse: The prometheus statistics
@@ -37,4 +26,4 @@ async def prometheus_view(
         (b'content-type', CONTENT_TYPE_LATEST.encode('ascii'))
     ]
     body = generate_latest()
-    return 200, headers, bytes_writer(body)
+    return HttpResponse(200, headers, bytes_writer(body))
