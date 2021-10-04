@@ -45,9 +45,7 @@ class PrometheusMiddleware:
         with monitor(self.metric_type(
                 self.host,
                 self.app_name,
-                request.scope,
-                request.info,
-                request.matches
+                request
         )) as metric:
             response = await handler(request)
             metric.status = response.status
