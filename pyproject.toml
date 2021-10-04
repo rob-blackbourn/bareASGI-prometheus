@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bareASGI-prometheus"
-version = "4.0.0-alpha.0"
+version = "4.0.0"
 description = "Prometheus metrics for bareASGI"
 authors = ["Rob Blackbourn <rob.blackbourn@gmail.com>"]
 license = "Apache-2.0"
@@ -11,8 +11,8 @@ packages = [
 repository = "https://github.com/rob-blackbourn/bareASGI-prometheus"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-bareASGI = "^4.0.0-alpha.1"
+python = "^3.8"
+bareASGI = "^4.0.0"
 prometheus_client = "^0.11"
 jetblack-metrics = "^1"
 
