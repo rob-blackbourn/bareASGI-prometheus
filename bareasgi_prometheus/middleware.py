@@ -3,13 +3,10 @@
 from socket import gethostname
 from typing import Optional, Type
 
-from baretypes import (
-    Scope,
-    Info,
-    RouteMatches,
-    Content,
+from bareasgi import (
+    HttpRequest,
     HttpResponse,
-    HttpChainedCallback
+    HttpRequestCallback
 )
 
 from jetblack_metrics import monitor
@@ -42,24 +39,14 @@ class PrometheusMiddleware:
 
     async def __call__(
             self,
-            scope: Scope,
-            info: Info,
-            matches: RouteMatches,
-            content: Content,
-            handler: HttpChainedCallback
+            request: HttpRequest,
+            handler: HttpRequestCallback
     ) -> HttpResponse:
         with monitor(self.metric_type(
                 self.host,
                 self.app_name,
-                scope,
-                info,
-                matches
+                request
         )) as metric:
-            status, headers, response_content, pushes = await handler(
-                scope,
-                info,
-                matches,
-                content
-            )
-            metric.status = status
-            return status, headers, response_content, pushes
+            response = await handler(request)
+            metric.status = response.status
+            return response
