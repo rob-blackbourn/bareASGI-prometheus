@@ -15,7 +15,8 @@ def add_prometheus_middleware(
         metric_type: Optional[Type[HttpRequestMetric]] = None,
         host: Optional[str] = None,
         app_name: Optional[str] = None,
-        metrics_path: Optional[str] = '/metrics'
+        path_prefix: str = '',
+        metrics_path: str = '/metrics'
 ) -> Application:
     """Adds prometheus middleware as the first middleware.
 
@@ -27,18 +28,23 @@ def add_prometheus_middleware(
             Defaults to None.
         app_name (Optional[str], optional): The application name. Defaults to
             None.
-        metrics_path (Optional[str], optional): The path from which the metrics
-            will be served. Defaults to '/metrics'.
+        path_prefix (str, optional): The prefix for the path from which the
+            metrics will be served. Defaults to ''.
+        metrics_path (str, optional): The path from which the metrics
+            will be served. Defaults to '/metrics'. Note the path_prefix will be
+            prepended to this path.
 
     Returns:
         Application: The ASGI application
     """
 
     prometheus_middleware = PrometheusMiddleware(
-        metric_type=metric_type, host=host, app_name=app_name)
+        metric_type=metric_type,
+        host=host,
+        app_name=app_name
+    )
     app.middlewares.insert(0, prometheus_middleware)
 
-    if metrics_path:
-        app.http_router.add({'GET'}, metrics_path, prometheus_view)
+    app.http_router.add({'GET'}, path_prefix + metrics_path, prometheus_view)
 
     return app
